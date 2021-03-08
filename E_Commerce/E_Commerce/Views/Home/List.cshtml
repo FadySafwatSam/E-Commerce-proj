@@ -1,0 +1,32 @@
+﻿
+@model UserItems;
+
+    <div class="card-columns">
+
+        @foreach (var item in Model.MyItems)
+        {
+
+
+            <div class="col-xs-4 col-sm-4 col-lg-4 col-xl-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@item.UrlImg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.ItemName</h5>
+                        <h5>Price : @item.price   </h5>
+                        <p class="card-text">@item.Description</p>
+                    
+                        <form asp-action="List" Asp-Controller="Home" method="post">
+                            <input type="submit" class="btn btn-outline-success" value="Like" name="Act" />
+                            <input type="submit" class="btn btn-outline-success" value="Buy" name="Act" />
+                            <input type="hidden" name="ItemId" value="@item.ItemId" />
+                            <input type="hidden" name="CategoryId" value="@item.CategoryId" />
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        }
+    </div>

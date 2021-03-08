@@ -1,0 +1,19 @@
+﻿body {
+    background-color:red;
+}
+
+
+.blue {
+background-color:blue;
+
+width:200px;
+height:400px;
+color:red;
+
+}
+.red {
+    background-color: red;
+    width: 200px;
+    height: 400px;
+    color: red;
+}

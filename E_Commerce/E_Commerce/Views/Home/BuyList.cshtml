@@ -1,0 +1,75 @@
+﻿
+@model IEnumerable<LikedItemsModel>;
+
+
+
+@section scripts{
+
+    <script>
+
+
+
+
+        $(document).ready(function () {
+            $(".del").click(function () {
+                if (!confirm("Do you want to delete")) {
+                    return false;
+                }
+            });
+        });
+
+
+
+
+    </script>
+
+}
+
+
+@if (Context.Session.GetString("UserName") != null)
+{
+
+    <div class="card-columns">
+
+
+        <img src="~/Images/Mobiles/mobile-1.jpg" />
+
+        @foreach (var it in Model)
+        {
+
+
+            <div class="col-xs-4 col-sm-4 col-lg-4 col-xl-4">
+                <div class="card" style="width: 18rem;">
+
+                    <img class="card-img-top" src="@it.UrlImg" alt="Card image cap">
+
+                    <div class="card-body">
+                        <h5 class="card-title">@it.ItemName</h5>
+                        <h5>Price : @it.price   </h5>
+                        <p class="card-text">@it.Description</p>
+
+
+                        <form method="post">
+
+                            <input type="submit" class="btn btn-outline-success" value="Like" name="Act" />
+                            <input type="submit" class="btn btn-outline-danger del" value="Delete" name="Act" />
+                            <input type="hidden" name="ItemId" value="@it.ItemId" />
+                            <input type="hidden" name="CategoryId" value="@it.CategoryId" />
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+
+
+    </div>
+
+}
+else
+{
+    <h1>You should Login first</h1>
+
+}

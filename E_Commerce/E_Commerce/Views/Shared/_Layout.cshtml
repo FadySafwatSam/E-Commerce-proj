@@ -1,0 +1,116 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <!-- CSS only -->
+
+
+
+
+    <link href="~/Css/Site.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/bootstrap/jquery-1.10.2.min.js"></script>
+    <script src="~/bootstrap/bootstrap.min.js"></script>
+
+
+
+    @*<script src="~/lib/jquery-3.4.1.min.js"></script>*@
+
+   @RenderSection("scripts",false);
+
+</head>
+<body class="Green">
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top bg-dark">
+        <a class="navbar-brand" href="#">E-Commerce</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Home/List">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/BuyList">Buy List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/LikedList">Liked List</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/Home/List?CategoryId=2">Clothes</a>
+                        <a class="dropdown-item" href="/Home/List?CategoryId=1">Cameras</a>
+                        <a class="dropdown-item" href="/Home/List?CategoryId=3">Mobiles</a>
+
+
+                    </div>
+                </li>
+
+                @if (Context.Session.GetString("UserName") == null)
+                {
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Main/Register">Register new user</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Main/Login">Login</a>
+                    </li>
+
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Main/LogOut">LogOut</a>
+                    </li>
+
+                }
+
+
+
+
+
+                @*<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-expanded="false">
+                Dropdownn
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Home/List">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </li>*@
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+
+    <div class="container">
+
+
+        <div>
+            @RenderBody()
+        </div>
+
+    </div>
+
+
+</body>
+</html>
